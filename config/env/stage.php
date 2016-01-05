@@ -2,7 +2,7 @@
 
 //these 2 override the options table in DB
 define('WP_HOME', 'http://your-project.local');
-define('WP_SITEURL', WP_HOME . '/site/');
+//define('WP_SITEURL', WP_HOME . '/site/');
 
 define('WP_CONTENT_DIR', APP_ROOT . '/public/content');
 define('WP_CONTENT_URL', WP_HOME . '/content');
@@ -11,18 +11,15 @@ define('WP_DEBUG', true);
 
 
 // ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
-define('DB_NAME', 'database_name_here');
+$dbName     = apache_getenv ( "DB_NAME" );
+$dbUserName = apache_getenv ( "DB_USER" );
+$dbPassword = apache_getenv ( "DB_PASSWORD" );
+$dbHost     = apache_getenv ( "DB_HOST" );
 
-/** MySQL database username */
-define('DB_USER', 'username_here');
-
-/** MySQL database password */
-define('DB_PASSWORD', 'password_here');
-
-/** MySQL hostname */
-define('DB_HOST', 'localhost');
-
+define( 'DB_USER', $dbUserName );
+define( 'DB_PASSWORD', $dbPassword );
+define( 'DB_NAME', $dbName );
+define( 'DB_HOST', $dbHost );
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
 
